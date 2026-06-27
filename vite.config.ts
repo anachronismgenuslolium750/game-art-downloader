@@ -10,7 +10,7 @@ export default defineConfig({
                 name: 'Game Art Downloader',
                 namespace: 'https://github.com/redphx',
                 version: pkg.version,
-                description: 'Download game arts from XBOX, Playstation, Nintendo web stores',
+                description: 'Download game arts from Steam, GOG, XBOX, Playstation and Nintendo web stores',
                 license: 'MIT',
                 'run-at': 'context-menu',
                 match: [
