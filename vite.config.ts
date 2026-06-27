@@ -9,6 +9,7 @@ export default defineConfig({
             userscript: {
                 name: 'Game Art Downloader',
                 namespace: 'https://github.com/redphx',
+                author: 'redphx',
                 version: pkg.version,
                 description: 'Download game arts from Steam, GOG, XBOX, Playstation and Nintendo web stores',
                 license: 'MIT',
