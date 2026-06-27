@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Game Art Downloader
 // @namespace    https://github.com/redphx
-// @version      1.0.0
+// @version      1.0.1-dev
 // @author
-// @description  Download game arts from XBOX, Playstation, Nintendo web stores
+// @description  Download game arts from Steam, GOG, XBOX, Playstation and Nintendo web stores
 // @license      MIT
 // @downloadURL  https://github.com/redphx/game-art-downloader/releases/latest/download/game-art-downloader.user.js
 // @updateURL    https://github.com/redphx/game-art-downloader/raw/refs/heads/main/dist/game-art-downloader.meta.js

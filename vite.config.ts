@@ -27,7 +27,7 @@ export default defineConfig({
 
             },
             build: {
-                metaFileName: true,
+                metaFileName: !pkg.version.includes('-dev'),
             },
         }),
     ],
