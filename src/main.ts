@@ -1,5 +1,4 @@
 // @ts-ignore isolatedModules
-
 import { GogStore } from "./stores/GogStore";
 import { NintendoStore } from "./stores/NintendoStore";
 import { PlaystationStore } from "./stores/PlaystationStore";
@@ -54,6 +53,25 @@ const STORES = [
     new GogStore(CONFIGS.stores.gog, CONFIGS.thumbnail),
 ];
 
+
+const htmlEntities: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+};
+const HTML_ENTITY_PATTERN = /[&<>"']/g;
+
+function escape(value: unknown) {
+    if (typeof value === 'number') {
+        return value;
+    }
+
+    const strValue = String(value) as string;
+    return strValue.replace(HTML_ENTITY_PATTERN, match => htmlEntities[match]);
+}
+
 function renderGameArts(store: WebStore, gameArts: GameArt[]) {
     const $container = document.createElement('div');
     $container.className = 'game-art-downloader';
@@ -66,13 +84,13 @@ function renderGameArts(store: WebStore, gameArts: GameArt[]) {
     gameArts.sort((a, b) => a.purpose > b.purpose ? 1 : -1);
 
     gameArts.forEach(gameArt => {
-        const linksHtml = gameArt.images.map(item => `<a href="${item.src}" target="_blank">${item.name}</a>`).join('');
+        const linksHtml = gameArt.images.map(item => `<a href="${escape(item.src)}" target="_blank">${escape(item.name)}</a>`).join('');
 
         html.push(`
 <div class="game-art">
     <fieldset>
-        <legend>${gameArt.purpose}</legend>
-        <img width="${CONFIGS.thumbnail.width}" src="${gameArt.thumb}" />
+        <legend>${escape(gameArt.purpose)}</legend>
+        <img width="${escape(CONFIGS.thumbnail.width)}" src="${escape(gameArt.thumb)}" />
 
         <div class="links-container">${linksHtml}</div>
     </fieldset>

@@ -299,6 +299,18 @@
 		new NintendoStore(CONFIGS.stores.nintendo, CONFIGS.thumbnail),
 		new GogStore(CONFIGS.stores.gog, CONFIGS.thumbnail)
 	];
+	var htmlEntities = {
+		"&": "&amp;",
+		"<": "&lt;",
+		">": "&gt;",
+		"\"": "&quot;",
+		"'": "&#39;"
+	};
+	var HTML_ENTITY_PATTERN = /[&<>"']/g;
+	function escape(value) {
+		if (typeof value === "number") return value;
+		return String(value).replace(HTML_ENTITY_PATTERN, (match) => htmlEntities[match]);
+	}
 	function renderGameArts(store, gameArts) {
 		const $container = document.createElement("div");
 		$container.className = "game-art-downloader";
@@ -307,12 +319,12 @@
 		html.push("<div class=\"game-arts\">");
 		gameArts.sort((a, b) => a.purpose > b.purpose ? 1 : -1);
 		gameArts.forEach((gameArt) => {
-			const linksHtml = gameArt.images.map((item) => `<a href="${item.src}" target="_blank">${item.name}</a>`).join("");
+			const linksHtml = gameArt.images.map((item) => `<a href="${escape(item.src)}" target="_blank">${escape(item.name)}</a>`).join("");
 			html.push(`
 <div class="game-art">
     <fieldset>
-        <legend>${gameArt.purpose}</legend>
-        <img width="${CONFIGS.thumbnail.width}" src="${gameArt.thumb}" />
+        <legend>${escape(gameArt.purpose)}</legend>
+        <img width="${escape(CONFIGS.thumbnail.width)}" src="${escape(gameArt.thumb)}" />
 
         <div class="links-container">${linksHtml}</div>
     </fieldset>
