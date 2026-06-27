@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Game Art Downloader
 // @namespace    https://github.com/redphx
-// @version      1.0.1-dev
+// @version      1.0.1
 // @author
 // @description  Download game arts from Steam, GOG, XBOX, Playstation and Nintendo web stores
 // @license      MIT
@@ -325,7 +325,7 @@
 		$container.className = "game-art-downloader";
 		$container.dataset.store = store.STORE_ID;
 		let html = [];
-		html.push(`<div class="header"><span>Game Art Downloader 1.0.1-dev</span> <a href="https://github.com/redphx/game-art-downloader" target="_blank">github</a></div>`);
+		html.push(`<div class="header"><span>Game Art Downloader 1.0.1</span> <a href="https://github.com/redphx/game-art-downloader" target="_blank">github</a></div>`);
 		html.push("<div class=\"game-arts\">");
 		gameArts.sort((a, b) => a.purpose > b.purpose ? 1 : -1);
 		gameArts.forEach((gameArt) => {
