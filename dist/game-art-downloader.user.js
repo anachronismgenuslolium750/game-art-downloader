@@ -181,7 +181,7 @@
 					thumb: this.generateImageUrl(item.url, this.thumbnailOptions.width),
 					images: [{
 						src: this.generateImageUrl(item.url, 5e3),
-						name: `full`
+						name: `full.jpg`
 					}]
 				});
 			});

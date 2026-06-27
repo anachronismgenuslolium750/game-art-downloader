@@ -52,7 +52,7 @@ export class PlaystationStore extends WebStore {
                 thumb: this.generateImageUrl(item.url, this.thumbnailOptions.width),
                 images: [{
                     src: this.generateImageUrl(item.url, 5000),
-                    name: `full`,
+                    name: `full.jpg`,
                 }],
             });
         });
