@@ -1,0 +1,106 @@
+// @ts-ignore isolatedModules
+
+import { GogStore } from "./stores/GogStore";
+import { NintendoStore } from "./stores/NintendoStore";
+import { PlaystationStore } from "./stores/PlaystationStore";
+import { WebStore } from "./stores/WebStore";
+import { XboxStore } from "./stores/XboxStore";
+import mainCss from "./main.css?raw";
+import { SteamStore } from "./stores/SteamStore";
+
+const CONFIGS: {
+    thumbnail: ThumbnailOptions;
+    stores: {
+        xbox: WebStoreOptions;
+        playstation: WebStoreOptions;
+        nintendo: WebStoreOptions;
+        gog: WebStoreOptions;
+        steam: WebStoreOptions;
+    };
+} = {
+    thumbnail: {
+        width: 150,
+    },
+    stores: {
+        // TODO: get these info automatically
+        xbox: {
+            market: 'US',
+            language: 'english',
+        },
+        playstation: {
+            market: 'US',
+            language: 'english',
+        },
+        nintendo: {
+            market: 'US',
+            language: 'english',
+        },
+        gog: {
+            market: 'US',
+            language: 'english',
+        },
+        steam: {
+            market: 'US',
+            language: 'english',
+        },
+    },
+};
+
+const STORES = [
+    new SteamStore(CONFIGS.stores.steam, CONFIGS.thumbnail),
+    new XboxStore(CONFIGS.stores.xbox, CONFIGS.thumbnail),
+    new PlaystationStore(CONFIGS.stores.playstation, CONFIGS.thumbnail),
+    new NintendoStore(CONFIGS.stores.nintendo, CONFIGS.thumbnail),
+    new GogStore(CONFIGS.stores.gog, CONFIGS.thumbnail),
+];
+
+function renderGameArts(store: WebStore, gameArts: GameArt[]) {
+    const $container = document.createElement('div');
+    $container.className = 'game-art-downloader';
+
+    let html = [];
+    html.push('<div class="header"><span>Game Art Downloader</span> <a href="https://github.com/redphx/game-art-downloader" target="_blank">github</a></div>');
+    html.push('<div class="game-arts">');
+
+    // Sort game arts by purposes
+    gameArts.sort((a, b) => a.purpose > b.purpose ? 1 : -1);
+
+    gameArts.forEach(gameArt => {
+        const linksHtml = gameArt.images.map(item => `<a href="${item.src}" target="_blank">${item.name}</a>`).join('');
+
+        html.push(`
+<div class="game-art">
+    <fieldset>
+        <legend>${gameArt.purpose}</legend>
+        <img width="${CONFIGS.thumbnail.width}" src="${gameArt.thumb}" />
+
+        <div class="links-container">${linksHtml}</div>
+    </fieldset>
+</div>
+`);
+    });
+
+    html.push('</div>');
+
+    $container.innerHTML = html.join('');
+
+    document.documentElement.append($container);
+    setTimeout(() => $container.scrollIntoView(false), 100);
+}
+
+// Inject CSS
+const $style = document.createElement('style');
+$style.innerHTML = mainCss;
+document.documentElement.append($style);
+
+let store;
+for (store of STORES) {
+    if (!store.isValid()) {
+        continue;
+    }
+
+    const gameArts = await store.extractImages();
+    if (gameArts.length) {
+        renderGameArts(store, gameArts);
+    }
+}
