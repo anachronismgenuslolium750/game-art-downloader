@@ -1,6 +1,7 @@
 import { WebStore } from "./WebStore";
 
 export class SteamStore extends WebStore {
+    public override readonly STORE_ID = 'steam';
     protected override readonly MATCH_URL = /https:\/\/store\.steampowered\.com\/app\/(\d+)/;
 
     public override async extractImages(): Promise<GameArt[]> {

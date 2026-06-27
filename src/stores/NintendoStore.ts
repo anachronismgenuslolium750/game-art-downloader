@@ -1,6 +1,7 @@
 import { WebStore } from "./WebStore";
 
 export class NintendoStore extends WebStore {
+    public override readonly STORE_ID = 'nintendo';
     protected override readonly MATCH_URL = /https:\/\/www\.nintendo\.com\/[a-z]{2}\/store\/products\/[\w\-]+/;
 
     public async extractImages(): Promise<GameArt[]> {

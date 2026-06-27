@@ -6,6 +6,36 @@
     font-family: monospace;
     font-size: 1rem;
 
+    a {
+        outline: none;
+        text-decoration: none;
+    }
+
+    &[data-store="xbox"] {
+        --color-primary: #107c10;
+        --color-primary-content: #fff;
+    }
+
+    &[data-store="playstation"] {
+        --color-primary: #003697;
+        --color-primary-content: #fff;
+    }
+
+    &[data-store="nintendo"] {
+        --color-primary: #e60012;
+        --color-primary-content: #fff;
+    }
+
+    &[data-store="steam"] {
+        --color-primary: #1a9fff;
+        --color-primary-content: #000;
+    }
+
+    &[data-store="gog"] {
+        --color-primary: #da8bf0;
+        --color-primary-content: #000;
+    }
+
     .header {
         display: block;
         font-size: 1.2rem;
@@ -14,8 +44,7 @@
 
         a {
             font-size: 0.75rem;
-            color: #107c10;
-            text-decoration: none;
+            color: var(--color-primary);
 
             &:hover {
                 text-decoration: underline;
@@ -55,12 +84,12 @@
 
                     a {
                         color: white;
-                        text-decoration: none;
                         background: black;
                         padding: 0.125rem 0.625rem;
 
                         &:hover {
-                            background: #107c10;
+                            color: var(--color-primary-content);
+                            background-color: var(--color-primary);
                         }
                     }
                 }

@@ -1,6 +1,7 @@
 import { WebStore } from "./WebStore";
 
 export class GogStore extends WebStore {
+    public override readonly STORE_ID = 'gog';
     protected override readonly MATCH_URL = /https:\/\/www\.gog\.com\/[a-z]{2}\/game\/([\w\W\-\_]+)/;
 
     public override async extractImages(): Promise<GameArt[]> {

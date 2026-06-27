@@ -75,6 +75,7 @@ function escape(value: unknown) {
 function renderGameArts(store: WebStore, gameArts: GameArt[]) {
     const $container = document.createElement('div');
     $container.className = 'game-art-downloader';
+    $container.dataset.store = store.STORE_ID;
 
     let html = [];
     html.push(`<div class="header"><span>Game Art Downloader ${__SCRIPT_VERSION__}</span> <a href="https://github.com/redphx/game-art-downloader" target="_blank">github</a></div>`);

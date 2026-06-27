@@ -1,6 +1,7 @@
 import { WebStore } from "./WebStore";
 
 export class PlaystationStore extends WebStore {
+    public override readonly STORE_ID = 'playstation';
     // https://store.playstation.com/en-us/concept/10020020
     protected override readonly MATCH_URL = /https:\/\/store\.playstation\.com\/\w{2}-\w{2}\/(product|concept)\/([\w\-\_]+)/;
 

@@ -1,6 +1,7 @@
 import { WebStore } from "./WebStore";
 
 export class XboxStore extends WebStore {
+    public override readonly STORE_ID = 'xbox';
     protected override readonly MATCH_URL = /https:\/\/www\.xbox\.com\/\w{2}-\w{2}\/\games\/store\/[\w\-]+\/(\w+)/;
 
     public override async extractImages(): Promise<GameArt[]> {
