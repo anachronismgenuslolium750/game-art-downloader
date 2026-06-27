@@ -37,4 +37,7 @@ export default defineConfig({
             output: {},
         },
     },
+    define: {
+        __SCRIPT_VERSION__: JSON.stringify(pkg.version),
+    },
 });

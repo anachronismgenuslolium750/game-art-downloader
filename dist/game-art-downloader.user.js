@@ -226,7 +226,6 @@
 			return `https:${url}?format=png&w=${width}&h=${height}`;
 		}
 	};
-	var main_default = ".game-art-downloader {\n    padding: 2rem 2rem 4rem;\n    margin: 0;\n    background-color: black;\n    color: white;\n    font-family: monospace;\n    font-size: 1rem;\n\n    .header {\n        display: block;\n        font-size: 1.2rem;\n        font-weight: bold;\n        margin: 1rem;\n\n        a {\n            font-size: 0.75rem;\n            color: #107c10;\n            text-decoration: none;\n\n            &:hover {\n                text-decoration: underline;\n            }\n        }\n    }\n\n    .game-arts {\n        display: flex;\n        gap: 2rem;\n        flex-wrap: wrap;\n\n        .game-art {\n            fieldset {\n                background: #252525;\n                padding: 1rem;\n                border: 1px solid #393939;\n\n                legend {\n                    background: #363636;\n                    border: 1px solid #454545;\n                    color: white;\n                    padding: 0.125rem 0.375rem;\n                    margin: 0;\n                }\n\n                img {\n                    display: block;\n                    margin: 0 auto 1rem;\n                }\n\n                .links-container {\n                    margin-top: 0.5rem;\n                    display: flex;\n                    gap: 0.75rem;\n                    justify-content: center;\n\n                    a {\n                        color: white;\n                        text-decoration: none;\n                        background: black;\n                        padding: 0.125rem 0.625rem;\n\n                        &:hover {\n                            background: #107c10;\n                        }\n                    }\n                }\n            }\n        }\n    }\n}\n";
 	var SteamStore = class extends WebStore {
 		MATCH_URL = /https:\/\/store\.steampowered\.com\/app\/(\d+)/;
 		async extractImages() {
@@ -267,6 +266,7 @@
 			return url;
 		}
 	};
+	var main_default = ".game-art-downloader {\n    padding: 2rem 2rem 4rem;\n    margin: 0;\n    background-color: black;\n    color: white;\n    font-family: monospace;\n    font-size: 1rem;\n\n    .header {\n        display: block;\n        font-size: 1.2rem;\n        font-weight: bold;\n        margin: 1rem;\n\n        a {\n            font-size: 0.75rem;\n            color: #107c10;\n            text-decoration: none;\n\n            &:hover {\n                text-decoration: underline;\n            }\n        }\n    }\n\n    .game-arts {\n        display: flex;\n        gap: 2rem;\n        flex-wrap: wrap;\n\n        .game-art {\n            fieldset {\n                background: #252525;\n                padding: 1rem;\n                border: 1px solid #393939;\n\n                legend {\n                    background: #363636;\n                    border: 1px solid #454545;\n                    color: white;\n                    padding: 0.125rem 0.375rem;\n                    margin: 0;\n                }\n\n                img {\n                    display: block;\n                    margin: 0 auto 1rem;\n                }\n\n                .links-container {\n                    margin-top: 0.5rem;\n                    display: flex;\n                    gap: 0.75rem;\n                    justify-content: center;\n\n                    a {\n                        color: white;\n                        text-decoration: none;\n                        background: black;\n                        padding: 0.125rem 0.625rem;\n\n                        &:hover {\n                            background: #107c10;\n                        }\n                    }\n                }\n            }\n        }\n    }\n}\n";
 	var CONFIGS = {
 		thumbnail: { width: 150 },
 		stores: {
@@ -315,7 +315,7 @@
 		const $container = document.createElement("div");
 		$container.className = "game-art-downloader";
 		let html = [];
-		html.push("<div class=\"header\"><span>Game Art Downloader</span> <a href=\"https://github.com/redphx/game-art-downloader\" target=\"_blank\">github</a></div>");
+		html.push(`<div class="header"><span>Game Art Downloader 1.0.1-dev</span> <a href="https://github.com/redphx/game-art-downloader" target="_blank">github</a></div>`);
 		html.push("<div class=\"game-arts\">");
 		gameArts.sort((a, b) => a.purpose > b.purpose ? 1 : -1);
 		gameArts.forEach((gameArt) => {

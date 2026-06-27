@@ -4,8 +4,8 @@ import { NintendoStore } from "./stores/NintendoStore";
 import { PlaystationStore } from "./stores/PlaystationStore";
 import { WebStore } from "./stores/WebStore";
 import { XboxStore } from "./stores/XboxStore";
-import mainCss from "./main.css?raw";
 import { SteamStore } from "./stores/SteamStore";
+import mainCss from "./main.css?raw";
 
 const CONFIGS: {
     thumbnail: ThumbnailOptions;
@@ -77,7 +77,7 @@ function renderGameArts(store: WebStore, gameArts: GameArt[]) {
     $container.className = 'game-art-downloader';
 
     let html = [];
-    html.push('<div class="header"><span>Game Art Downloader</span> <a href="https://github.com/redphx/game-art-downloader" target="_blank">github</a></div>');
+    html.push(`<div class="header"><span>Game Art Downloader ${__SCRIPT_VERSION__}</span> <a href="https://github.com/redphx/game-art-downloader" target="_blank">github</a></div>`);
     html.push('<div class="game-arts">');
 
     // Sort game arts by purposes
